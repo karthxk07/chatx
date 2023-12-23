@@ -2,8 +2,8 @@ const users = require("../models/userModel");
 
 const ioHandler = (io) => {
   io.on("connection", (socket) => {
-    const username = socket.handshake.params?.username || null;
-    const roomId = socket.handshake.params?.roomId || null;
+    const username = socket.handshake.query?.username || null;
+    const roomId = socket.handshake.query?.roomId || null;
     socket.join(roomId);
     socket.on("message", (data) => {
       io.to(roomId).emit("message", data);
