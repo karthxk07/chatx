@@ -6,8 +6,10 @@
   "author": "karthxk07 <karthikkalyanam07@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node ./src/index.js",
-    "dev": "nodemon ./src/index.js"
+    "start": "npx tailwind -i ./src/public/global.css -o ./src/public/output/css && node ./src/index.js ",
+    "dev": "concurrently \" yarn run dev:index\" \"yarn run build:tailwind\"",
+    "dev:index": "nodemon ./src/index.js",
+    "build:tailwind": "npx tailwind -i ./src/public/global.css  -o ./src/public/output/css --watch"
   },
   "dependencies": {
     "axios": "^1.6.2",
@@ -19,6 +21,10 @@
     "postcss-cli": "^11.0.0",
     "socket.io": "^4.7.2",
     "socket.io-client": "^4.7.2",
+    "strip-ansi": "^7.1.0",
     "tailwindcss": "^3.4.0"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
   }
 }

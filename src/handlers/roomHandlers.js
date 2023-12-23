@@ -6,7 +6,6 @@ const createRoomHandler = (roomId) => {
   } else {
     rooms.add(roomId);
   }
-  console.log(rooms);
 };
 const deleteRoomHandler = (roomId) => {
   if (!rooms.has(roomId)) {
@@ -14,13 +13,11 @@ const deleteRoomHandler = (roomId) => {
   } else {
     rooms.delete(roomId);
   }
-  console.log(rooms);
 };
 const joinRoomHandler = (roomId) => {
   if (!rooms.has(roomId)) {
     throw new Error("No such room exist");
   }
-  console.log(rooms);
 };
 
 module.exports = { createRoomHandler, deleteRoomHandler, joinRoomHandler };
