@@ -1,3 +1,4 @@
+const rooms = require("../models/roomModel");
 const users = require("../models/userModel");
 
 const ioHandler = (io) => {
@@ -10,6 +11,9 @@ const ioHandler = (io) => {
     });
     socket.on("disconnect", () => {
       users.delete(username);
+      if (io.of("/").adapter.rooms.get(roomId) == undefined) {
+        rooms.delete(roomId);
+      }
     });
   });
 };
