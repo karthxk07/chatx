@@ -5,7 +5,16 @@
   "repository": "https://github.com/karthxk07/chatx.git",
   "author": "karthxk07 <karthikkalyanam07@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "node ./src/index.js",
+    "dev": "nodemon ./src/index.js"
+  },
   "dependencies": {
-    "express": "^4.18.2"
+    "body-parser": "^1.20.2",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "nodemon": "^3.0.2",
+    "socket.io": "^4.7.2"
   }
 }
