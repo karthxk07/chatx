@@ -6,7 +6,7 @@ document
   .addEventListener("submit", async (e) => {
     e.preventDefault();
     await axios
-      .get("http://localhost:3030/user/addUser", {
+      .get("/user/addUser", {
         params: {
           username: e.target.username.value,
         },
@@ -26,7 +26,7 @@ document
   .getElementById("createRoomButton")
   ?.addEventListener("click", async (e) => {
     await axios
-      .get("http://localhost:3030/room/createRoom", {
+      .get("/room/createRoom", {
         params: {
           roomId: document.getElementById("roomForm").children[1].value,
         },
@@ -55,7 +55,7 @@ document
   .getElementById("joinRoomButton")
   ?.addEventListener("click", async (e) => {
     await axios
-      .get("http://localhost:3030/room/joinRoom", {
+      .get("/room/joinRoom", {
         params: {
           roomId: document.getElementById("roomForm").children[1].value,
         },
