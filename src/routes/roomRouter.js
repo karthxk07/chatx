@@ -1,7 +1,6 @@
 const {
   createRoomHandler,
   deleteRoomHandler,
-  getRoomHandler,
   joinRoomHandler,
 } = require("../handlers/roomHandlers");
 
@@ -12,7 +11,7 @@ roomRouter.get("/createRoom", (req, res) => {
     createRoomHandler(req.query.roomId);
     res.end("Room created successfully");
   } catch (err) {
-    res.send(err.message);
+    res.status(500).send(err.message);
     res.end();
   }
 });
@@ -20,18 +19,18 @@ roomRouter.get("/createRoom", (req, res) => {
 roomRouter.delete("/deleteRoom", (req, res) => {
   try {
     deleteRoomHandler(req.query.roomId);
+    res.end("Room deleted successfully");
   } catch (err) {
-    res.send(err.message);
+    res.status(500).send(err.message);
     res.end();
   }
-  res.end("Room deleted successfully");
 });
 roomRouter.get("/joinRoom", (req, res) => {
   try {
     joinRoomHandler(req.query.roomId);
     res.end("Room joined successfully");
   } catch (err) {
-    res.send(err.message);
+    res.status(500).send(err.message);
     res.end();
   }
 });

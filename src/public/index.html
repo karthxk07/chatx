@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="output.css" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <title>Chat X</title>
+  </head>
+  <body class="h-full w-full">
+    <div
+      id="selectUsername"
+      class="absolute top-1/2 start-1/2 -translate-x-1/2 -translate-y-1/2 bg-gray-100 p-7 rounded-xl hidden"
+    >
+      <form class="flex flex-col" id="usernameForm">
+        <label for="username" class="text-sm pl-2">Username:</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          placeholder="Enter a username"
+          class="bg-gray-200 rounded-full px-3 text-sm py-3 my-1"
+        />
+        <input
+          type="submit"
+          value="Submit"
+          class="bg-blue-600 mx-auto px-2 py-1 rounded-2xl hover:bg-blue-400 my-2"
+        />
+      </form>
+    </div>
+    <div
+      id="roomForm"
+      class="flex-col absolute top-1/2 start-1/2 -translate-x-1/2 -translate-y-1/2 bg-gray-100 p-7 rounded-xl hidden"
+    >
+      <label for="roomID" class="my-1 text-sm pl-2">Room ID : </label>
+      <input
+        type="text"
+        id="roomID"
+        placeholder="Enter the room ID"
+        class="bg-gray-200 rounded-full px-3 text-sm py-3 my-1"
+      />
+      <div class="my-2">
+        <button
+          class="bg-blue-600 hover:bg-blue-400 px-3 py-2 rounded-full mx-auto"
+          id="createRoomButton"
+        >
+          Create Room
+        </button>
+        <button
+          id="joinRoomButton"
+          class="bg-blue-600 hover:bg-blue-400 px-3 py-2 rounded-full mx-auto"
+        >
+          Join Room
+        </button>
+      </div>
+    </div>
+    <div
+      class="flex-col absolute overflow-hidden top-1/2 start-1/2 -translate-x-1/2 -translate-y-1/2 bg-gray-100 rounded-xl"
+    >
+      <div class="min-h-96 h-96 w-56"><ul id="chatList"></ul></div>
+      <form class="bg-gray-300">
+        <input
+          type="text"
+          name="message"
+          id="message"
+          class="pl-3 bg-gray-300 focus:outline-none"
+          placeholder="Enter your message"
+        /><input
+          type="submit"
+          value="Send"
+          class="bg-blue-600 hover:bg-blue-400 rounded-3xl py-1 px-3 m-2"
+        />
+      </form>
+    </div>
+    <script src="./script.js" type="module"></script>
+  </body>
+</html>

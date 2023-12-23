@@ -1,9 +1,15 @@
+const users = require("../models/userModel");
+
 const ioHandler = (io) => {
   io.on("connection", (socket) => {
-    const roomId = socket.handshake.query.roomId;
-    socket.join(roomId);
+    const username = socket.handshake.params?.username || null;
+    const roomId = socket.handshake.params?.roomId || null;
+    console.log("connected");
     socket.on("message", (data) => {
       io.to(roomId).emit("message", data);
+    });
+    socket.on("disconnect", () => {
+      users.delete(username);
     });
   });
 };

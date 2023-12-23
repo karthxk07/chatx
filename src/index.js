@@ -5,6 +5,8 @@ const { createServer } = require("node:http");
 const { Server } = require("socket.io");
 const ioHandler = require("./handlers/ioHandler");
 const roomRouter = require("./routes/roomRouter");
+const path = require("node:path");
+const userRouter = require("./routes/userRouter");
 
 const app = express();
 const server = createServer(app);
@@ -12,11 +14,9 @@ const io = new Server(server);
 
 app.use(bodyParser.json());
 app.use("/room", roomRouter);
-
-app.get("/", (req, res) => {
-  console.log("req");
-  res.end();
-});
+app.use("/user", userRouter);
+app.use(express.static(path.join(__dirname, "public")));
+app.use("/", express.static(path.join(__dirname, "public/index.html")));
 
 ioHandler(io);
 
