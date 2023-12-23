@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const express = require("express");
 const { createServer } = require("node:http");
 const { Server } = require("socket.io");
-const socketHandler = require("./handlers/socketHandler");
+const ioHandler = require("./handlers/ioHandler");
 const roomRouter = require("./routes/roomRouter");
 
 const app = express();
@@ -18,10 +18,7 @@ app.get("/", (req, res) => {
   res.end();
 });
 
-io.on("connection", (socket) => {
-  console.log("a user connected");
-  socketHandler(socket);
-});
+ioHandler(io);
 
 server.listen(process.env.PORT, () => {
   console.log("server running at PORT : " + process.env.PORT);
